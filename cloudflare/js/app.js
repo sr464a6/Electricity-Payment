@@ -1,533 +1,868 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #212529;
-}
-
-.container {
-    width: 100%;
-    max-width: 1150px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #fff;
-    border-bottom: 1px solid #e9ecef;
-    box-shadow: 0 3px 15px rgba(0,0,0,.05);
-}
-
-.navbar-content {
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    color: #0d6efd;
-    text-decoration: none;
-    font-size: 21px;
-    font-weight: 700;
-}
-
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.nav-link {
-    padding: 9px 13px;
-    color: #6c757d;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    background: #e7f1ff;
-    color: #0d6efd;
-}
-
-.logout-button {
-    border: none;
-    padding: 9px 15px;
-    margin-left: 8px;
-    border-radius: 8px;
-    background: #dc3545;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.menu-button {
-    display: none;
-    border: none;
-    background: transparent;
-    font-size: 27px;
-    cursor: pointer;
-}
-
-main {
-    min-height: calc(100vh - 130px);
-    padding: 35px 0 50px;
-}
-
-.welcome-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-    margin-bottom: 25px;
-    border-radius: 18px;
-    background: linear-gradient(135deg,#0d6efd,#084298);
-    color: #fff;
-    box-shadow: 0 10px 25px rgba(13,110,253,.18);
-}
-
-.welcome-small {
-    margin: 0 0 5px;
-    font-size: 14px;
-}
-
-.welcome-section h1 {
-    margin: 0 0 8px;
-    font-size: 30px;
-}
-
-.welcome-description {
-    margin: 0;
-}
-
-.user-avatar {
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,.2);
-    font-size: 35px;
-}
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.summary-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 22px;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.04);
-}
-
-.summary-icon {
-    width: 52px;
-    height: 52px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    font-size: 25px;
-}
-
-.summary-icon.blue {
-    background: #e7f1ff;
-}
-
-.summary-icon.orange {
-    background: #fff3cd;
-}
-
-.summary-icon.green {
-    background: #d1e7dd;
-}
-
-.summary-card p {
-    margin: 0 0 5px;
-    color: #6c757d;
-    font-size: 13px;
-}
-
-.summary-card h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.content-section {
-    margin-bottom: 25px;
-    padding: 25px;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.04);
-}
-
-.section-header {
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    margin: 0 0 5px;
-    font-size: 21px;
-}
-
-.section-header p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 14px;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 650px;
-}
-
-thead {
-    background: #f8f9fa;
-}
-
-th,
-td {
-    padding: 14px;
-    text-align: left;
-    border-bottom: 1px solid #e9ecef;
-    font-size: 14px;
-}
-
-th {
-    color: #495057;
-}
-
-td {
-    color: #495057;
-}
-
-.badge {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.badge.unpaid {
-    background: #f8d7da;
-    color: #842029;
-}
-
-.badge.paid {
-    background: #d1e7dd;
-    color: #0f5132;
-}
-
-.small-button {
-    padding: 7px 13px;
-    border: none;
-    border-radius: 7px;
-    background: #0d6efd;
-    color: #fff;
-    cursor: pointer;
-}
-
-.profile-card {
-    display: flex;
-    gap: 25px;
-}
-
-.profile-avatar {
-    width: 85px;
-    height: 85px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #e7f1ff;
-    font-size: 40px;
-}
-
-.profile-information {
-    flex: 1;
-}
-
-.profile-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 13px 0;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.profile-row span {
-    color: #6c757d;
-    font-size: 14px;
-}
-
-.profile-row strong {
-    text-align: right;
-    font-size: 14px;
-}
-
-.notification {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 2000;
-    max-width: 350px;
-    padding: 14px 18px;
-    border-radius: 10px;
-    background: #212529;
-    color: #fff;
-    transform: translateY(120px);
-    opacity: 0;
-    transition: .3s;
-}
-
-.notification.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-footer {
-    padding: 20px 0;
-    background: #fff;
-    border-top: 1px solid #e9ecef;
-    text-align: center;
-}
-
-footer p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 13px;
-}
-
-.auth-page {
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg,#eef6ff,#f8fbff);
-}
-
-.auth-box {
-    width: 100%;
-    max-width: 430px;
-    padding: 40px 35px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0,0,0,.10);
-}
-
-.auth-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 40px;
-}
-
-.user-bg {
-    background: #e8f7ee;
-}
-
-.admin-bg {
-    background: #e7f1ff;
-}
-
-.auth-box h1 {
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.user-color {
-    color: #198754;
-}
-
-.admin-color {
-    color: #0d6efd;
-}
-
-.auth-subtitle {
-    margin-bottom: 30px;
-    text-align: center;
-    color: #6c757d;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
+// ========================================
+// ELECTRICITY PAYMENT
+// APP.JS
+// ========================================
 
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: 600;
-}
-
-.form-group input {
-    width: 100%;
-    height: 48px;
-    padding: 0 14px;
-    border: 1px solid #ced4da;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-}
-
-.form-group input:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 3px rgba(13,110,253,.12);
-}
-
-.auth-button {
-    width: 100%;
-    height: 48px;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.auth-button:disabled {
-    opacity: .7;
-    cursor: wait;
-}
+const API = "/api";
 
-.user-button {
-    background: #198754;
-}
-
-.admin-button {
-    background: #0d6efd;
-}
+// ========================================
+// HELPER
+// ========================================
 
-.back-link {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: #6c757d;
-    text-decoration: none;
+function getElement(id) {
+    return document.getElementById(id);
 }
 
-.error-message {
-    display: none;
-    margin-bottom: 20px;
-    padding: 12px;
-    border-radius: 8px;
-    background: #f8d7da;
-    color: #842029;
-    font-size: 14px;
-}
+function formatRupiah(value) {
+    const number = Number(value) || 0;
 
-.warning-box {
-    margin-top: 20px;
-    padding: 12px;
-    border-radius: 8px;
-    background: #fff3cd;
-    color: #664d03;
-    font-size: 13px;
-    text-align: center;
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0
+    }).format(number);
 }
-
-@media (max-width:850px) {
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 15px 20px;
-        flex-direction: column;
-        background: #fff;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .navbar-menu.show {
-        display: flex;
-    }
-
-    .menu-button {
-        display: block;
-    }
-
-    .nav-link {
-        width: 100%;
-    }
-
-    .logout-button {
-        width: 100%;
-        margin: 5px 0 0;
-    }
 
-    .summary-grid {
-        grid-template-columns: 1fr;
+function getCurrentUser() {
+    try {
+        return JSON.parse(localStorage.getItem("currentUser"));
+    } catch {
+        return null;
     }
 }
 
-@media (max-width:600px) {
-    .container {
-        padding: 0 15px;
-    }
+function saveCurrentUser(user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+}
 
-    .welcome-section {
-        padding: 22px;
-    }
+function removeCurrentUser() {
+    localStorage.removeItem("currentUser");
+}
 
-    .welcome-section h1 {
-        font-size: 24px;
-    }
+function isLoggedIn() {
+    return !!getCurrentUser();
+}
 
-    .content-section {
-        padding: 18px;
-    }
+function redirect(url) {
+    window.location.href = url;
+}
 
-    .profile-card {
-        flex-direction: column;
-    }
+// ========================================
+// API REQUEST
+// ========================================
 
-    .profile-row {
-        flex-direction: column;
-        gap: 4px;
-    }
+async function apiRequest(endpoint, options = {}) {
+    try {
+        const response = await fetch(`${API}${endpoint}`, {
+            ...options,
+            headers: {
+                "Content-Type": "application/json",
+                ...(options.headers || {})
+            }
+        });
 
-    .profile-row strong {
-        text-align: left;
-    }
+        const data = await response.json();
 
-    .auth-box {
-        padding: 30px 22px;
+        if (!response.ok) {
+            throw new Error(
+                data.message || "Terjadi kesalahan pada server"
+            );
+        }
+
+        return data;
+
+    } catch (error) {
+        console.error("API Error:", error);
+
+        throw error;
     }
 }
+
+// ========================================
+// LOGIN
+// ========================================
+
+async function login(username, password) {
+    if (!username || !password) {
+        return {
+            success: false,
+            message: "Username dan password wajib diisi"
+        };
+    }
+
+    try {
+        const result = await apiRequest("/login", {
+            method: "POST",
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        if (result.success) {
+            saveCurrentUser({
+                ...result.user,
+                role: result.role
+            });
+        }
+
+        return result;
+
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message
+        };
+    }
+}
+
+// ========================================
+// LOGOUT
+// ========================================
+
+function logout() {
+    removeCurrentUser();
+    redirect("login.html");
+}
+
+// ========================================
+// PROTECT PAGE
+// ========================================
+
+function requireLogin() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        redirect("login.html");
+        return null;
+    }
+
+    return user;
+}
+
+function requireAdmin() {
+    const user = requireLogin();
+
+    if (!user) {
+        return null;
+    }
+
+    if (user.role !== "admin") {
+        alert("Halaman ini khusus untuk admin.");
+        redirect("user.html");
+        return null;
+    }
+
+    return user;
+}
+
+function requireUser() {
+    const user = requireLogin();
+
+    if (!user) {
+        return null;
+    }
+
+    if (user.role !== "user") {
+        alert("Halaman ini khusus untuk user.");
+        redirect("admin.html");
+        return null;
+    }
+
+    return user;
+}
+
+// ========================================
+// GET USER
+// ========================================
+
+async function getUser(userId) {
+    try {
+        return await apiRequest(`/users?id=${userId}`);
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message
+        };
+    }
+}
+
+// ========================================
+// GET ALL USERS
+// ========================================
+
+async function getUsers() {
+    try {
+        return await apiRequest("/users");
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message,
+            users: []
+        };
+    }
+}
+
+// ========================================
+// CREATE USER
+// ========================================
+
+async function createUser(userData) {
+    try {
+        return await apiRequest("/users", {
+            method: "POST",
+            body: JSON.stringify(userData)
+        });
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message
+        };
+    }
+}
+
+// ========================================
+// GET PAYMENTS
+// ========================================
+
+async function getPayments() {
+    try {
+        return await apiRequest("/payments");
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message,
+            payments: []
+        };
+    }
+}
+
+// ========================================
+// CREATE PAYMENT
+// ========================================
+
+async function createPayment(paymentData) {
+    try {
+        return await apiRequest("/payments", {
+            method: "POST",
+            body: JSON.stringify(paymentData)
+        });
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message
+        };
+    }
+}
+
+// ========================================
+// DASHBOARD USER
+// ========================================
+
+async function loadUserDashboard() {
+    const user = requireUser();
+
+    if (!user) {
+        return;
+    }
+
+    const nameElement = getElement("userName");
+    const meterElement = getElement("meterNumber");
+    const balanceElement = getElement("balance");
+
+    if (nameElement) {
+        nameElement.textContent = user.name || user.username;
+    }
+
+    if (meterElement) {
+        meterElement.textContent = user.meter_number || "-";
+    }
+
+    if (balanceElement) {
+        balanceElement.textContent = formatRupiah(user.balance);
+    }
+
+    try {
+        const result = await getUser(user.id);
+
+        if (result.success && result.user) {
+            const freshUser = {
+                ...result.user,
+                role: "user"
+            };
+
+            saveCurrentUser(freshUser);
+
+            if (nameElement) {
+                nameElement.textContent =
+                    freshUser.name || freshUser.username;
+            }
+
+            if (meterElement) {
+                meterElement.textContent =
+                    freshUser.meter_number || "-";
+            }
+
+            if (balanceElement) {
+                balanceElement.textContent =
+                    formatRupiah(freshUser.balance);
+            }
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// ========================================
+// DASHBOARD ADMIN
+// ========================================
+
+async function loadAdminDashboard() {
+    const admin = requireAdmin();
+
+    if (!admin) {
+        return;
+    }
+
+    const adminName = getElement("adminName");
+
+    if (adminName) {
+        adminName.textContent = admin.username;
+    }
+
+    const usersResult = await getUsers();
+    const paymentsResult = await getPayments();
+
+    const users = usersResult.users || [];
+    const payments = paymentsResult.payments || [];
+
+    const totalUsers = getElement("totalUsers");
+    const totalPayments = getElement("totalPayments");
+    const totalAmount = getElement("totalAmount");
+    const pendingPayments = getElement("pendingPayments");
+
+    if (totalUsers) {
+        totalUsers.textContent = users.length;
+    }
+
+    if (totalPayments) {
+        totalPayments.textContent = payments.length;
+    }
+
+    if (totalAmount) {
+        const amount = payments.reduce(
+            (total, payment) =>
+                total + Number(payment.amount || 0),
+            0
+        );
+
+        totalAmount.textContent = formatRupiah(amount);
+    }
+
+    if (pendingPayments) {
+        const pending = payments.filter(
+            payment => payment.status === "pending"
+        );
+
+        pendingPayments.textContent = pending.length;
+    }
+}
+
+// ========================================
+// RENDER USERS
+// ========================================
+
+async function renderUsers() {
+    const tableBody = getElement("usersTableBody");
+
+    if (!tableBody) {
+        return;
+    }
+
+    const result = await getUsers();
+
+    if (!result.success) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    ${result.message || "Gagal mengambil data"}
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    const users = result.users || [];
+
+    if (users.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Belum ada user.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    tableBody.innerHTML = users.map(user => `
+        <tr>
+            <td>${user.id}</td>
+            <td>${escapeHTML(user.name)}</td>
+            <td>${escapeHTML(user.username)}</td>
+            <td>${escapeHTML(user.meter_number)}</td>
+            <td>${formatRupiah(user.balance)}</td>
+            <td>
+                <button
+                    class="btn-delete"
+                    onclick="deleteUser(${user.id})"
+                >
+                    Hapus
+                </button>
+            </td>
+        </tr>
+    `).join("");
+}
+
+// ========================================
+// RENDER PAYMENTS
+// ========================================
+
+async function renderPayments() {
+    const tableBody = getElement("paymentsTableBody");
+
+    if (!tableBody) {
+        return;
+    }
+
+    const result = await getPayments();
+
+    if (!result.success) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    ${result.message || "Gagal mengambil data"}
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    const payments = result.payments || [];
+
+    if (payments.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    Belum ada transaksi.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    tableBody.innerHTML = payments.map(payment => `
+        <tr>
+            <td>${payment.id}</td>
+            <td>${escapeHTML(payment.name || "-")}</td>
+            <td>${escapeHTML(payment.meter_number || "-")}</td>
+            <td>${formatRupiah(payment.amount)}</td>
+            <td>${escapeHTML(payment.payment_method)}</td>
+            <td>
+                <span class="status ${payment.status}">
+                    ${escapeHTML(payment.status)}
+                </span>
+            </td>
+            <td>
+                ${formatDate(payment.created_at)}
+            </td>
+        </tr>
+    `).join("");
+}
+
+// ========================================
+// DELETE USER
+// ========================================
+
+async function deleteUser(userId) {
+    const confirmDelete = confirm(
+        "Yakin ingin menghapus user ini?"
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    try {
+        const result = await apiRequest(
+            `/users?id=${userId}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        if (result.success) {
+            alert("User berhasil dihapus");
+            await renderUsers();
+        } else {
+            alert(result.message || "Gagal menghapus user");
+        }
+
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+// ========================================
+// ADD USER FORM
+// ========================================
+
+function setupAddUserForm() {
+    const form = getElement("addUserForm");
+
+    if (!form) {
+        return;
+    }
+
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const username = getElement("newUsername")?.value.trim();
+        const password = getElement("newPassword")?.value;
+        const name = getElement("newName")?.value.trim();
+        const meterNumber =
+            getElement("newMeterNumber")?.value.trim();
+        const balance =
+            Number(getElement("newBalance")?.value || 0);
+
+        if (!username || !password || !name || !meterNumber) {
+            alert("Semua data wajib diisi.");
+            return;
+        }
+
+        const result = await createUser({
+            username,
+            password,
+            name,
+            meter_number: meterNumber,
+            balance
+        });
+
+        if (!result.success) {
+            alert(result.message || "Gagal membuat user");
+            return;
+        }
+
+        alert("User berhasil dibuat.");
+
+        form.reset();
+
+        await renderUsers();
+        await loadAdminDashboard();
+    });
+}
+
+// ========================================
+// PAYMENT FORM
+// ========================================
+
+function setupPaymentForm() {
+    const form = getElement("paymentForm");
+
+    if (!form) {
+        return;
+    }
+
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const user = requireUser();
+
+        if (!user) {
+            return;
+        }
+
+        const amount =
+            Number(getElement("paymentAmount")?.value || 0);
+
+        const paymentMethod =
+            getElement("paymentMethod")?.value;
+
+        if (!amount || amount <= 0) {
+            alert("Masukkan jumlah pembayaran.");
+            return;
+        }
+
+        if (!paymentMethod) {
+            alert("Pilih metode pembayaran.");
+            return;
+        }
+
+        const result = await createPayment({
+            user_id: user.id,
+            amount,
+            payment_method: paymentMethod
+        });
+
+        if (!result.success) {
+            alert(
+                result.message ||
+                "Pembayaran gagal dibuat."
+            );
+
+            return;
+        }
+
+        alert(
+            "Pembayaran berhasil dibuat dan menunggu konfirmasi admin."
+        );
+
+        form.reset();
+
+        if (typeof loadUserDashboard === "function") {
+            await loadUserDashboard();
+        }
+    });
+}
+
+// ========================================
+// SEARCH USERS
+// ========================================
+
+function setupUserSearch() {
+    const searchInput = getElement("userSearch");
+
+    if (!searchInput) {
+        return;
+    }
+
+    searchInput.addEventListener("input", () => {
+        const keyword =
+            searchInput.value.toLowerCase().trim();
+
+        const rows =
+            document.querySelectorAll(
+                "#usersTableBody tr"
+            );
+
+        rows.forEach(row => {
+            const text =
+                row.textContent.toLowerCase();
+
+            row.style.display =
+                text.includes(keyword)
+                    ? ""
+                    : "none";
+        });
+    });
+}
+
+// ========================================
+// SEARCH PAYMENTS
+// ========================================
+
+function setupPaymentSearch() {
+    const searchInput =
+        getElement("paymentSearch");
+
+    if (!searchInput) {
+        return;
+    }
+
+    searchInput.addEventListener("input", () => {
+        const keyword =
+            searchInput.value.toLowerCase().trim();
+
+        const rows =
+            document.querySelectorAll(
+                "#paymentsTableBody tr"
+            );
+
+        rows.forEach(row => {
+            const text =
+                row.textContent.toLowerCase();
+
+            row.style.display =
+                text.includes(keyword)
+                    ? ""
+                    : "none";
+        });
+    });
+}
+
+// ========================================
+// FORMAT DATE
+// ========================================
+
+function formatDate(dateString) {
+    if (!dateString) {
+        return "-";
+    }
+
+    const date = new Date(dateString);
+
+    if (Number.isNaN(date.getTime())) {
+        return dateString;
+    }
+
+    return new Intl.DateTimeFormat(
+        "id-ID",
+        {
+            dateStyle: "medium",
+            timeStyle: "short"
+        }
+    ).format(date);
+}
+
+// ========================================
+// ESCAPE HTML
+// ========================================
+
+function escapeHTML(value) {
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+// ========================================
+// DISPLAY USER INFO
+// ========================================
+
+function displayUserInfo() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return;
+    }
+
+    const nameElements =
+        document.querySelectorAll(
+            "[data-user-name]"
+        );
+
+    nameElements.forEach(element => {
+        element.textContent =
+            user.name || user.username;
+    });
+
+    const usernameElements =
+        document.querySelectorAll(
+            "[data-user-username]"
+        );
+
+    usernameElements.forEach(element => {
+        element.textContent =
+            user.username || "-";
+    });
+
+    const meterElements =
+        document.querySelectorAll(
+            "[data-user-meter]"
+        );
+
+    meterElements.forEach(element => {
+        element.textContent =
+            user.meter_number || "-";
+    });
+
+    const balanceElements =
+        document.querySelectorAll(
+            "[data-user-balance]"
+        );
+
+    balanceElements.forEach(element => {
+        element.textContent =
+            formatRupiah(user.balance);
+    });
+}
+
+// ========================================
+// AUTO LOGOUT BUTTON
+// ========================================
+
+function setupLogoutButtons() {
+    const buttons =
+        document.querySelectorAll(
+            "[data-logout]"
+        );
+
+    buttons.forEach(button => {
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            logout();
+        });
+    });
+}
+
+// ========================================
+// PAGE DETECTION
+// ========================================
+
+async function initializeApp() {
+    displayUserInfo();
+    setupLogoutButtons();
+
+    setupAddUserForm();
+    setupPaymentForm();
+
+    setupUserSearch();
+    setupPaymentSearch();
+
+    const page =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+    if (page === "admin.html") {
+        await loadAdminDashboard();
+        await renderUsers();
+        await renderPayments();
+    }
+
+    if (page === "user.html") {
+        await loadUserDashboard();
+    }
+}
+
+// ========================================
+// START APP
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initializeApp
+);
+
+// ========================================
+// GLOBAL EXPORT
+// ========================================
+
+window.ElectricityApp = {
+    login,
+    logout,
+    getCurrentUser,
+    getUsers,
+    getUser,
+    createUser,
+    getPayments,
+    createPayment,
+    loadUserDashboard,
+    loadAdminDashboard,
+    renderUsers,
+    renderPayments,
+    formatRupiah,
+    formatDate
+};
