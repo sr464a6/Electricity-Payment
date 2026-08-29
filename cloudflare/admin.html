@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Tagihan Listrik</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<nav class="admin-navbar">
+
+    <div class="admin-nav-container">
+
+        <a href="admin.html" class="admin-logo">
+            ⚡ Admin Tagihan Listrik
+        </a>
+
+        <button
+            id="adminMenuButton"
+            class="admin-menu-button"
+        >
+            ☰
+        </button>
+
+        <div
+            id="adminNavMenu"
+            class="admin-nav-menu"
+        >
+
+            <a href="#dashboard">
+                Dashboard
+            </a>
+
+            <a href="#customers">
+                Pelanggan
+            </a>
+
+            <a href="#bills">
+                Tagihan
+            </a>
+
+            <button id="adminLogout">
+                Keluar
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<main class="admin-main">
+
+<div class="admin-container">
+
+<section id="dashboard">
+
+    <div class="admin-header">
+
+        <div>
+
+            <p>
+                Panel Administrator
+            </p>
+
+            <h1>
+                Dashboard
+            </h1>
+
+        </div>
+
+        <div class="admin-profile">
+            🛡️
+            <span id="adminName">
+                Admin
+            </span>
+        </div>
+
+    </div>
+
+    <div class="admin-summary">
+
+        <div class="admin-card">
+
+            <div class="admin-card-icon blue">
+                👥
+            </div>
+
+            <div>
+                <span>Total Pelanggan</span>
+                <strong id="totalCustomers">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="admin-card">
+
+            <div class="admin-card-icon orange">
+                💰
+            </div>
+
+            <div>
+                <span>Total Tagihan</span>
+                <strong id="totalBills">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="admin-card">
+
+            <div class="admin-card-icon green">
+                ✓
+            </div>
+
+            <div>
+                <span>Tagihan Lunas</span>
+                <strong id="paidBills">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="admin-card">
+
+            <div class="admin-card-icon red">
+                !
+            </div>
+
+            <div>
+                <span>Belum Dibayar</span>
+                <strong id="unpaidBills">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section
+    id="customers"
+    class="admin-section"
+>
+
+    <div class="admin-section-header">
+
+        <div>
+            <h2>Pelanggan</h2>
+            <p>Daftar pelanggan listrik</p>
+        </div>
+
+        <button
+            class="primary-button"
+            id="refreshCustomers"
+        >
+            ↻ Refresh
+        </button>
+
+    </div>
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>ID Pelanggan</th>
+                    <th>No. Meter</th>
+                    <th>Alamat</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="customerTable">
+
+                <tr>
+                    <td colspan="5">
+                        Memuat data...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<section
+    id="bills"
+    class="admin-section"
+>
+
+    <div class="admin-section-header">
+
+        <div>
+            <h2>Tagihan</h2>
+            <p>Kelola tagihan pelanggan</p>
+        </div>
+
+        <button
+            class="primary-button"
+            id="refreshBills"
+        >
+            ↻ Refresh
+        </button>
+
+    </div>
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Pelanggan</th>
+                    <th>Periode</th>
+                    <th>kWh</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="adminBillTable">
+
+                <tr>
+                    <td colspan="6">
+                        Memuat data...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</div>
+
+</main>
+
+<div
+    id="adminNotification"
+    class="admin-notification"
+></div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+name = "electricity-payment-api"
+main = "src/index.js"
+compatibility_date = "2026-08-29"
+
+[vars]
+APP_NAME = "Electricity Payment"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "electricity-payment-db"
+database_id = "48fb3523-f184-4cbb-a5ac-028b134b5873"
+
+[observability]
+enabled = true

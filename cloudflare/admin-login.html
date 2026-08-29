@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Tagihan Listrik</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-box">
+
+        <div class="auth-icon admin-bg">
+            🛡️
+        </div>
+
+        <h1 class="admin-color">
+            Login Admin
+        </h1>
+
+        <p class="auth-subtitle">
+            Masuk ke panel administrator
+        </p>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <form id="adminLoginForm">
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username Admin
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Masukkan username admin"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="auth-button admin-button"
+                id="loginButton"
+            >
+                Login Admin
+            </button>
+
+        </form>
+
+        <div class="warning-box">
+            ⚠️ Halaman khusus administrator.
+        </div>
+
+        <a href="index.html" class="back-link">
+            ← Kembali
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+const API_BASE = "/api";
+
+const form =
+    document.getElementById("adminLoginForm");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    errorMessage.style.display = "none";
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if (!username || !password) {
+
+        errorMessage.textContent =
+            "Username dan password wajib diisi.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+    loginButton.disabled = true;
+    loginButton.textContent = "Memproses...";
+
+    try {
+
+        const response = await fetch(
+            `${API_BASE}/admin/login`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "Login admin gagal."
+            );
+        }
+
+        if (data.user.role !== "admin") {
+            throw new Error(
+                "Akun bukan administrator."
+            );
+        }
+
+        localStorage.setItem(
+            "electricity_token",
+            data.token
+        );
+
+        localStorage.setItem(
+            "electricity_user",
+            JSON.stringify(data.user)
+        );
+
+        window.location.href =
+            "admin.html";
+
+    } catch (error) {
+
+        errorMessage.textContent =
+            error.message ||
+            "Login admin gagal.";
+
+        errorMessage.style.display =
+            "block";
+
+    } finally {
+
+        loginButton.disabled = false;
+        loginButton.textContent =
+            "Login Admin";
+
+    }
+
+});
+</script>
+
+</body>
+</html>
